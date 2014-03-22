@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+include $(top_srcdir)/Makefile-globals.am
 
 LIBGUDEV_CURRENT=1
 LIBGUDEV_REVISION=2

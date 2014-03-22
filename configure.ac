@@ -110,6 +110,16 @@ AC_ARG_WITH(
         [],
         [with_rootlibdir=${libdir}]
 )
+AC_ARG_WITH(
+        [rundir],
+        [AS_HELP_STRING(
+		        [--with-rundir=DIR],
+                [Directory where runtime files are created (default=/var/run/udev)])],
+        [],
+        [with_rundir="/var/run/udev"]
+)
+AC_SUBST([UDEV_RUN_DIR], [$with_rundir])
+
 
 AC_ARG_ENABLE(
         [split-usr],
@@ -324,7 +334,6 @@ AC_CONFIG_FILES([Makefile
                  rule_generator/Makefile
                  rule_generator/write_cd_rules
                  rule_generator/write_net_rules
-                 src/Makefile
                  src/accelerometer/Makefile
                  src/ata_id/Makefile
                  src/cdrom_id/Makefile

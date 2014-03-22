@@ -111,8 +111,8 @@ void udev_queue_export_cleanup(struct udev_queue_export *udev_queue_export)
 {
         if (udev_queue_export == NULL)
                 return;
-        unlink("/run/udev/queue.tmp");
-        unlink("/run/udev/queue.bin");
+        unlink(UDEV_RUN_DIR "/queue.tmp");
+        unlink(UDEV_RUN_DIR "/queue.bin");
 }
 
 static int skip_to(FILE *file, long offset)
@@ -220,7 +220,7 @@ static int rebuild_queue_file(struct udev_queue_export *udev_queue_export)
         }
 
         /* create new queue file */
-        new_queue_file = fopen("/run/udev/queue.tmp", "w+e");
+        new_queue_file = fopen(UDEV_RUN_DIR "/queue.tmp", "w+e");
         if (new_queue_file == NULL)
                 goto error;
         seqnum = udev_queue_export->seqnum_max;
@@ -253,7 +253,7 @@ static int rebuild_queue_file(struct udev_queue_export *udev_queue_export)
                 goto error;
 
         /* rename the new file on top of the old one */
-        if (rename("/run/udev/queue.tmp", "/run/udev/queue.bin") != 0)
+        if (rename(UDEV_RUN_DIR "/queue.tmp", UDEV_RUN_DIR "/queue.bin") != 0)
                 goto error;
 
         if (udev_queue_export->queue_file != NULL)

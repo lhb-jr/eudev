@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+include $(top_srcdir)/Makefile-globals.am
 
 LIBUDEV_CURRENT=4
 LIBUDEV_REVISION=0
@@ -14,12 +14,12 @@ define move-to-rootlibdir
 	fi
 endef
 
-AM_CPPFLAGS = \
+AM_CPPFLAGS += \
 	-include $(top_builddir)/config.h \
+	-I $(top_srcdir)/src/udev \
 	-DUDEV_CONF_FILE=\"$(udevconffile)\" \
 	-DUDEV_HWDB_BIN=\"$(udevhwdbbin)\" \
-	-DUDEV_VERSION=$(UDEV_VERSION) \
-	-I $(top_srcdir)/src/udev
+	-DUDEV_VERSION=$(UDEV_VERSION) 
 
 lib_LTLIBRARIES = \
 	libudev.la

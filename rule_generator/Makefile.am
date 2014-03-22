@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+include $(top_srcdir)/Makefile-globals.am
 
 # ------------------------------------------------------------------------------
 # rule_generator - persistent network and optical device rule generator
