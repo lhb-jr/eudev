@@ -1,6 +1,6 @@
-ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+include $(top_srcdir)/Makefile-globals.am
 
-AM_CPPFLAGS = \
+AM_CPPFLAGS += \
 	-include $(top_builddir)/config.h \
 	-DMODPROBE=\"$(MODPROBE)\" \
 	-DROOTPREFIX=\"$(rootprefix)\" \

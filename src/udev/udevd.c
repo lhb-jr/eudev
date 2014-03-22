@@ -1034,7 +1034,7 @@ int main(int argc, char *argv[])
         chdir("/");
         umask(022);
 
-        mkdir("/run/udev", 0755);
+        mkdir(UDEV_RUN_DIR, 0755);
 
         dev_setup(NULL);
         static_dev_create_from_modules(udev);
@@ -1147,10 +1147,10 @@ int main(int argc, char *argv[])
         inotify_add_watch(fd_inotify, UDEV_CONF_DIR "/rules.d",
                           IN_DELETE | IN_MOVE | IN_CLOSE_WRITE);
 
-        if (access("/run/udev/rules.d", F_OK) < 0) {
-                mkdir_p("/run/udev/rules.d", 0755);
+        if (access(UDEV_RUN_DIR "/rules.d", F_OK) < 0) {
+                mkdir_p(UDEV_RUN_DIR "/rules.d", 0755);
         }
-        inotify_add_watch(fd_inotify, "/run/udev/rules.d",
+        inotify_add_watch(fd_inotify, UDEV_RUN_DIR "/rules.d",
                           IN_DELETE | IN_MOVE | IN_CLOSE_WRITE);
 
         udev_watch_restore(udev);
