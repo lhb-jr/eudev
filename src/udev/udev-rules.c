@@ -49,7 +49,7 @@ struct uid_gid {
 static const char* const rules_dirs[] = {
         UDEV_CONF_DIR "/rules.d",
         UDEV_RULES_DIR,
-        "/run/udev/rules.d",
+        UDEV_RUN_DIR "/rules.d",
         UDEV_LIBEXEC_DIR "/rules.d",
 #ifdef HAVE_SPLIT_USR
         "/lib/udev/rules.d",
