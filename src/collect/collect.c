@@ -31,10 +31,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#ifdef __UCLIBC__
-#include <linux/fcntl.h>
-#endif
-
 #include "libudev.h"
 #include "libudev-private.h"
 #include "macro.h"

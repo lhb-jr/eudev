@@ -58,10 +58,6 @@
 #include <linux/limits.h>
 #include <linux/input.h>
 
-#ifdef __UCLIBC__
-#include <linux/fcntl.h>
-#endif
-
 #include "libudev.h"
 #include "libudev-private.h"
 

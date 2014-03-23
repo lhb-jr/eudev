@@ -26,10 +26,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#ifdef __UCLIBC__
-#include <linux/fcntl.h>
-#endif
-
 int main(int argc, char** argv)
 {
         int mtd_fd;

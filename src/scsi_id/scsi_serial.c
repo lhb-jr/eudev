@@ -34,10 +34,6 @@
 #include <linux/types.h>
 #include <linux/bsg.h>
 
-#ifdef __UCLIBC__
-#include <linux/fcntl.h>
-#endif
-
 #include "libudev.h"
 #include "libudev-private.h"
 #include "scsi.h"
