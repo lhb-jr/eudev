@@ -57,12 +57,13 @@
   <refsect1><title>Rules files</title>
       <para>The udev rules are read from the files located in the
       system rules directory <filename>/lib/udev/rules.d</filename>,
-      the volatile runtime directory <filename>/run/udev/rules.d</filename>
+      the volatile runtime directory <filename>UDEV_RUN_DIR/rules.d</filename>,
+	  where UDEV_RUN_DIR is determined at compile time (typically /var/run/udev or /run/udev),
       and the local administration directory <filename>/etc/udev/rules.d</filename>.
       All rules files are collectively sorted and processed in lexical order,
       regardless of the directories in which they live. However, files with
       identical file names replace each other. Files in <filename>/etc</filename>
-      have the highest priority, files in <filename>/run</filename> take precedence
+      have the highest priority, files in <filename>UDEV_RUN_DIR</filename> take precedence
       over files with the same name in <filename>/lib</filename>. This can be
       used to override a system-supplied rules file with a local file if needed;
       a symlink in <filename>/etc</filename> with the same name as a rules file in
@@ -707,12 +708,15 @@
   <refsect1><title>Hardware Database Files</title>
       <para>The hwdb files are read from the files located in the
       system hwdb directory <filename>/lib/udev/hwdb.d</filename>,
-      the volatile runtime directory <filename>/run/udev/hwdb.d</filename>
+      and the local administration directory <filename>/etc/udev/rules.d</filename>.
+      regardless of the directories in which they live. However, files with
+      the volatile runtime directory <filename>UDEV_RUN_DIR/rules.d</filename>,
+	  where UDEV_RUN_DIR is determined at compile time (typically /var/run/udev or /run/udev),
       and the local administration directory <filename>/etc/udev/hwdb.d</filename>.
       All hwdb files are collectively sorted and processed in lexical order,
       regardless of the directories in which they live. However, files with
       identical filenames replace each other. Files in <filename>/etc</filename>
-      have the highest priority, files in <filename>/run</filename> take precedence
+      have the highest priority, files in <filename>UDEV_RUN_DIR</filename> take precedence
       over files with the same name in <filename>/lib</filename>. This can be
       used to override an hwdb file with a local file if needed;
       a symlink in <filename>/etc</filename> with the same name as a hwdb file in
