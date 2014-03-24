@@ -114,11 +114,11 @@ AC_ARG_WITH(
         [rundir],
         [AS_HELP_STRING(
 		        [--with-rundir=DIR],
-                [Directory where runtime files are created (default=/var/run/udev)])],
+                [Directory where runtime files are created (default=/var/run)])],
         [],
-        [with_rundir="/var/run/udev"]
+        [with_rundir="/var/run"]
 )
-AC_SUBST([UDEV_RUN_DIR], [$with_rundir])
+AC_SUBST([UDEV_ROOT_RUN_DIR], [$with_rundir])
 
 
 AC_ARG_ENABLE(
@@ -412,6 +412,7 @@ AC_MSG_RESULT([
 
         girdir                   ${datadir}/gir-1.0
         typelibsdir              ${libdir}/girepository-1.0
+        rundir                   ${with_rundir}
 ])
 
 # ------------------------------------------------------------------------------
